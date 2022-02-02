@@ -14,7 +14,6 @@ class ToDoListManager < Sinatra::Base
 
   get '/to-do' do
     @tasks = Task.all
-    p @tasks
     erb :index
   end
 
