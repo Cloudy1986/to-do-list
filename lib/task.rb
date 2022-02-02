@@ -21,4 +21,14 @@ class Task
     end
   end
 
+  def self.create(title:)
+    if ENV['ENVIRONMENT'] == 'test'
+      connection = PG.connect(dbname: 'to_do_database_test')
+    else
+      connection = PG.connect(dbname: 'to_do_database')
+    end
+    result = connection.exec_params("INSERT INTO tasks (title) VALUES ($1) RETURNING id, title;", [title])
+    Task.new(id: result[0]['id'], title: result[0]['title'])
+  end
+
 end

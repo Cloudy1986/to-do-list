@@ -17,5 +17,14 @@ class ToDoListManager < Sinatra::Base
     erb :index
   end
 
+  get '/to-do/new' do
+    erb :new
+  end
+
+  post '/to-do' do
+    Task.create(title: params["title"])
+    redirect '/to-do'
+  end
+
   run! if app_file == $0
 end
