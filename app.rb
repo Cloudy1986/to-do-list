@@ -11,6 +11,7 @@ class ToDoListManager < Sinatra::Base
   end
 
   get '/to-do' do
+    @tasks = ["Take out the bins", "Wash the car", "Buy groceries"]
     erb :index
   end
 
