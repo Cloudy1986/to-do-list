@@ -7,7 +7,7 @@ class ToDoListManager < Sinatra::Base
   end
 
   get '/' do
-    "Hello World"
+    erb :homepage
   end
 
   run! if app_file == $0
