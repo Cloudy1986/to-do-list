@@ -10,7 +10,7 @@ class Task
   end
 
   def self.all
-    if ENV['ENVIRONMENT'] = 'test'
+    if ENV['ENVIRONMENT'] == 'test'
       connection = PG.connect(dbname: 'to_do_database_test')
     else
       connection = PG.connect(dbname: 'to_do_database')
