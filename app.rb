@@ -12,6 +12,7 @@ class ToDoListManager < Sinatra::Base
 
   get '/to-do' do
     @tasks = ["Take out the bins", "Wash the car", "Buy groceries"]
+    # @tasks = Task.all
     erb :index
   end
 
