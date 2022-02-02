@@ -1,22 +1,17 @@
 require 'task'
 
-# describe Task do
+describe Task do
   
-#   describe '.all' do
-#     Task.new(title: '"Take out the bins"')
-#     Task.new(title: '"Wash the car"')
-#     Task.new(title: "Buy groceries")
+  describe '.all' do
+    it 'return the tasks from the database' do
+      tasks = Task.all
 
-#     tasks = Task.all
-#     p tasks
-
-#     expect(tasks[0]).to be_a Task
-#     expect(tasks.length).to eq 3
-#     expect(tasks[0])
-
-
-#   end
+      expect(tasks[0]['title']).to eq 'Take out the bins'
+      expect(tasks[1]['title']).to eq 'Wash the car'
+      expect(tasks[2]['title']).to eq 'Buy groceries'
+    end
+  end
   
 
 
-# end
+end

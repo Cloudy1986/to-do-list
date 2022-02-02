@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require './lib/task'
 require 'pg'
 
 class ToDoListManager < Sinatra::Base
@@ -12,10 +13,7 @@ class ToDoListManager < Sinatra::Base
   end
 
   get '/to-do' do
-    connection = PG.connect(dbname: 'to_do_database')
-    result = connection.exec_params("SELECT * FROM tasks;")
-    @tasks = result.each { |task| task }
-    # @tasks = Task.all
+    @tasks = Task.all
     erb :index
   end
 
