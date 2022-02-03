@@ -33,5 +33,9 @@ class ToDoListManager < Sinatra::Base
     redirect '/to-do'
   end
 
+  get '/to-do/:id' do
+    erb :edit
+  end
+
   run! if app_file == $0
 end
