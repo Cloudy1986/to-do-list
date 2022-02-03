@@ -31,4 +31,16 @@ describe Task do
     end
   end
 
+  describe '.delete' do
+    it 'deletes the correct task from the list' do
+      task = Task.create(title: 'Fill the car with petrol')
+
+      Task.delete(id: task.id)
+      tasks = Task.all
+
+      expect(tasks.length).to eq 0
+      expect(tasks).to eq []
+    end
+  end
+
 end

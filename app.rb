@@ -29,8 +29,7 @@ class ToDoListManager < Sinatra::Base
   end
 
   delete '/to-do/:id' do
-    p params['id']
-    # Task.delete(params['id'])
+    Task.delete(id: params['id'])
     redirect '/to-do'
   end
 
