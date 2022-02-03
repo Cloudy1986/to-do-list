@@ -50,4 +50,14 @@ class Task
     Task.new(id: result[0]['id'], title: result[0]['title'])
   end
 
+  def self.update(id:, title:)
+    if ENV['ENVIRONMENT'] == 'test'
+      connection = PG.connect(dbname: 'to_do_database_test')
+    else
+      connection = PG.connect(dbname: 'to_do_database')
+    end
+    result = connection.exec_params("UPDATE tasks SET title = $1 WHERE id = $2 RETURNING id, title;", [title, id])
+    Task.new(id: result[0]['id'], title: result[0]['title'])
+  end
+
 end

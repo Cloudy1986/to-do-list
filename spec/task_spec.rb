@@ -55,4 +55,17 @@ describe Task do
     end
   end
 
+  describe '.update' do
+    it 'updates the title of a task' do
+      task = Task.create(title: 'Take washing out of machine')
+      
+      updated_task = Task.update(id: task.id, title: 'Put air in tyres')
+      
+      expect(updated_task).to be_a Task
+      expect(updated_task.id).to eq task.id
+      expect(updated_task.title).not_to eq task.title
+      expect(updated_task.title).to eq 'Put air in tyres'
+    end
+  end
+
 end
