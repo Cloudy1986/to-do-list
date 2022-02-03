@@ -8,6 +8,8 @@ class ToDoListManager < Sinatra::Base
     register Sinatra::Reloader
   end
 
+  enable :sessions, :method_override
+
   get '/' do
     erb :homepage
   end
@@ -23,6 +25,12 @@ class ToDoListManager < Sinatra::Base
 
   post '/to-do' do
     Task.create(title: params["title"])
+    redirect '/to-do'
+  end
+
+  delete '/to-do/:id' do
+    p params['id']
+    # Task.delete(params['id'])
     redirect '/to-do'
   end
 
