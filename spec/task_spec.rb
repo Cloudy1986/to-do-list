@@ -45,13 +45,10 @@ describe Task do
 
   describe '.find' do
     it 'returns the correct task' do
-      #Arrange
       task = Task.create(title: 'Put washing machine on')
-      p task
-      #Act
+      
       returned_task = Task.find(id: task.id)
-      p returned_task
-      #Assert
+      
       expect(returned_task).to be_a Task
       expect(returned_task.id).to eq task.id
       expect(returned_task.title).to eq task.title

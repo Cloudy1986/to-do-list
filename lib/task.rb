@@ -40,8 +40,14 @@ class Task
     result = connection.exec_params("DELETE FROM tasks WHERE id = $1 ;", [id])
   end
 
-  # def self.find(id:)
-
-  # end
+  def self.find(id:)
+    if ENV['ENVIRONMENT'] == 'test'
+      connection = PG.connect(dbname: 'to_do_database_test')
+    else
+      connection = PG.connect(dbname: 'to_do_database')
+    end
+    result = connection.exec_params("SELECT * FROM tasks WHERE id = $1;", [id])
+    Task.new(id: result[0]['id'], title: result[0]['title'])
+  end
 
 end
