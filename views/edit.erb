@@ -1,3 +1,7 @@
 <h1>Edit Task</h1>
 
-<%= @task.title %>
+<form action="/to-do/<%= @task.id %>/edit" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+  <input type="text" name="title" placeholder="<%= @task.title %>">
+  <input type="submit" value="Submit">
+</form>

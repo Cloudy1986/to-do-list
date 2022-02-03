@@ -33,9 +33,16 @@ class ToDoListManager < Sinatra::Base
     redirect '/to-do'
   end
 
-  get '/to-do/:id' do
+  get '/to-do/:id/edit' do
     @task = Task.find(id: params['id'])
     erb :edit
+  end
+
+  patch '/to-do/:id/edit' do
+    p params['id']
+    p params['title']
+    # Task.update(id: params['id'], title: params['title'])
+    redirect '/to-do'
   end
 
   run! if app_file == $0
