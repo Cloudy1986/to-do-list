@@ -1,5 +1,5 @@
-feature '' do
-  scenario '' do
+feature 'Delete Task' do
+  scenario 'user can delete a task' do
     
     visit '/to-do'
     click_link 'Add Task'
