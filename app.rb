@@ -39,9 +39,7 @@ class ToDoListManager < Sinatra::Base
   end
 
   patch '/to-do/:id/edit' do
-    p params['id']
-    p params['title']
-    # Task.update(id: params['id'], title: params['title'])
+    Task.update(id: params['id'], title: params['title'])
     redirect '/to-do'
   end
 
