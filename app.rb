@@ -34,6 +34,8 @@ class ToDoListManager < Sinatra::Base
   end
 
   get '/to-do/:id' do
+    p params['id']
+    # @task = Task.find(id: params['id'])
     erb :edit
   end
 

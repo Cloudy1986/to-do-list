@@ -40,4 +40,8 @@ class Task
     result = connection.exec_params("DELETE FROM tasks WHERE id = $1 ;", [id])
   end
 
+  # def self.find(id:)
+
+  # end
+
 end
